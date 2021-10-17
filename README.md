@@ -1,6 +1,14 @@
-# Movies database application
+# MoviesDB application
+
+Deployed using Github pages [Demo](https://medaimane.github.io/movies-react-app/)
 
 [![Netlify Status](https://api.netlify.com/api/v1/badges/bdbd7705-a72b-4c5e-8844-94f87332f107/deploy-status)](https://app.netlify.com/sites/awesomemoviesdb/deploys)
+
+## Current Features
+
+- Search for movies
+- Add movies to favorites list
+- Add movies to watch later
 
 ## Getting Started with Create React App
 
