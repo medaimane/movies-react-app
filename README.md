@@ -1,4 +1,8 @@
-# Getting Started with Create React App
+# Movies database application
+
+[![Netlify Status](https://api.netlify.com/api/v1/badges/bdbd7705-a72b-4c5e-8844-94f87332f107/deploy-status)](https://app.netlify.com/sites/awesomemoviesdb/deploys)
+
+## Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 

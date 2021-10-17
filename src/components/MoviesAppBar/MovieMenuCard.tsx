@@ -7,10 +7,7 @@ import {
   CardMedia,
   CardContent,
 } from '@mui/material';
-import {
-  PlayArrow as PlayArrowIcon,
-  BookmarkRemove as BookmarkRemoveIcon,
-} from '@mui/icons-material';
+import {BookmarkRemove as BookmarkRemoveIcon} from '@mui/icons-material';
 import {MoviePresentable} from '../../screens/home/MoviePresentable';
 import {Colors} from '../../theme/Colors';
 
