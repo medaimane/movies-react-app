@@ -1,13 +1,24 @@
 import {combineEpics, ofType} from 'redux-observable';
-import {ignoreElements, tap} from 'rxjs';
+import {catchError, debounceTime, EMPTY, map, of, switchMap} from 'rxjs';
 import {EpicType} from '../../store/EpicType';
-import {HomeViewActions} from './homeActions';
+import {HomeActions, HomeViewActions} from './homeActions';
 
-const start: EpicType = (action$, _state$, {}) =>
+const onSearch: EpicType = (action$, _state$, {moviesGateway}) =>
   action$.pipe(
-    ofType(HomeViewActions.start.type),
-    tap(() => console.log('Home started')),
-    ignoreElements()
+    ofType(HomeViewActions.onSearchInputChange.type),
+    switchMap((action) => {
+      const query: string = action.payload;
+
+      if (!query) {
+        return EMPTY;
+      }
+
+      return moviesGateway.search(query).pipe(
+        debounceTime(10000),
+        map(HomeActions.search.success),
+        catchError(() => of(HomeActions.search.failure()))
+      );
+    })
   );
 
-export const homeEpic = combineEpics(start);
+export const homeEpic = combineEpics(onSearch);

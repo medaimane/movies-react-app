@@ -1,4 +1,4 @@
-import {createStore, applyMiddleware} from 'redux';
+import {createStore, applyMiddleware, Store} from 'redux';
 import logger from 'redux-logger';
 import {createEpicMiddleware} from 'redux-observable';
 import {Dependencies, dependencies} from '../dependencies/Dependencies';
@@ -7,7 +7,7 @@ import {rootEpic} from './rootEpic';
 import {rootReducer} from './rootReducer';
 import {RootState} from './rootState';
 
-export function configureStore() {
+export function configureStore(): Store {
   const epicMiddleware = createEpicMiddleware<
     Action | ActionWithPayload,
     Action | ActionWithPayload,
@@ -15,12 +15,14 @@ export function configureStore() {
     Dependencies
   >({dependencies});
 
-  const store = createStore(
+  const configuredStore = createStore(
     rootReducer,
     applyMiddleware(epicMiddleware, logger)
   );
 
   epicMiddleware.run(rootEpic);
 
-  return store;
+  return configuredStore;
 }
+
+export const store = configureStore();

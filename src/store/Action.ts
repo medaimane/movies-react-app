@@ -6,5 +6,5 @@ export interface Action extends AnyAction {
 
 export interface ActionWithPayload<T = any> extends AnyAction {
   type: string;
-  payload: T;
+  payload?: T;
 }
