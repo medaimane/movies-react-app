@@ -1,0 +1,1 @@
+{"version":3,"sources":["webpack://src/index.css"],"names":[],"mappings":"AAAA,UAEE,iBAAkB,CAClB,qBACF","file":"main.b681cb88.chunk.css","sourcesContent":["html,\nbody {\n  min-height: '100%';\n  background-color: #000000;\n}\n"]}
