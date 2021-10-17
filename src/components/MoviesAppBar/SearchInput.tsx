@@ -7,9 +7,9 @@ import {local} from '../../localization/local';
 const Search = styled('div')(({theme}) => ({
   position: 'relative',
   borderRadius: theme.shape.borderRadius,
-  backgroundColor: alpha(theme.palette.common.white, 0.15),
+  backgroundColor: alpha(theme.palette.common.white, 0.1),
   '&:hover': {
-    backgroundColor: alpha(theme.palette.common.white, 0.25),
+    backgroundColor: alpha(theme.palette.common.white, 0.15),
   },
   paddingRight: theme.spacing(2),
   paddingLeft: theme.spacing(2),
@@ -18,15 +18,22 @@ const Search = styled('div')(({theme}) => ({
     paddingLeft: theme.spacing(3),
     width: 'auto',
   },
+  [theme.breakpoints.up('xs')]: {
+    paddingLeft: theme.spacing(1),
+    width: '50%',
+  },
 }));
 
-const SearchIconWrapper = styled('div')(() => ({
+const SearchIconWrapper = styled('div')(({theme}) => ({
   height: '100%',
   position: 'absolute',
   pointerEvents: 'none',
   display: 'flex',
   alignItems: 'center',
   justifyContent: 'center',
+  [theme.breakpoints.up('sm')]: {
+    paddingLeft: theme.spacing(2),
+  },
 }));
 
 const StyledInputBase = styled(InputBase)(({theme}) => ({
@@ -38,6 +45,12 @@ const StyledInputBase = styled(InputBase)(({theme}) => ({
     width: '100%',
     [theme.breakpoints.up('md')]: {
       width: '20ch',
+    },
+    [theme.breakpoints.up('sm')]: {
+      paddingLeft: theme.spacing(6),
+    },
+    [theme.breakpoints.up('xs')]: {
+      paddingLeft: theme.spacing(4),
     },
   },
 }));

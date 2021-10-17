@@ -5,7 +5,7 @@ import {returntypeof} from 'typesafe-actions';
 import {MoviesEmptyView} from '../../components/MoviesEmptyView';
 import {MoviesList} from '../../components/MoviesList';
 import {RemoteData} from '../../components/RemoteData';
-import {SearchAppBar} from '../../components/SearchAppBar/SearchAppBar';
+import {MoviesAppBar} from '../../components/MoviesAppBar/MoviesAppBar';
 import {WelcomeView} from '../../components/WelcomeView';
 import {getImagesBaseUrl} from '../../services/networking/BaseUrls';
 import {RootState} from '../../store/rootState';
@@ -40,8 +40,10 @@ export function Home(props: Props) {
 
   return (
     <>
-      <SearchAppBar
+      <MoviesAppBar
         search={props.search}
+        favoritesMovies={[]}
+        watchLaterMovies={[]}
         onSearchInputChange={props.onSearchInputChange}
       />
 

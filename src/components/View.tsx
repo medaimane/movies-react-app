@@ -1,14 +1,11 @@
 import {styled} from '@mui/material/styles';
+import {Box} from '@mui/system';
 import {Colors} from '../theme/Colors';
 
-export const View = styled('div')(({theme}) => ({
+export const View = styled(Box)(({theme}) => ({
   display: 'flex',
   justifyContent: 'center',
   alignItems: 'center',
-  backgroundColor: Colors.background,
-  paddingTop: theme.spacing(8),
-  [theme.breakpoints.up('sm')]: {
-    paddingTop: theme.spacing(12),
-    width: 'auto',
-  },
+  backgroundColor: Colors.black,
+  padding: theme.spacing(8, 0),
 }));

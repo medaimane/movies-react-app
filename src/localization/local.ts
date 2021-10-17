@@ -6,7 +6,7 @@ export const local = {
   noMoviesFound: 'No movies found!',
   somethingWentWrong: 'Ooops! Something went wrong, click to retry!',
 
-  search: 'Search movies...',
+  search: 'Search...',
   searchResults: 'Search results:',
 
   favorites: 'Favorites',
