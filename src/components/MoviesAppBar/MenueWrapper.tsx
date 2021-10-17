@@ -14,6 +14,11 @@ interface Props {
 export function MenueWrapper(props: Props) {
   return (
     <Menu
+      sx={{
+        display: 'flex',
+        flex: 1,
+        justifyContent: 'flex-end',
+      }}
       anchorEl={props.anchorEl}
       anchorOrigin={{
         vertical: 'top',

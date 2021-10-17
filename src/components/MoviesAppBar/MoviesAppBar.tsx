@@ -20,6 +20,9 @@ interface Props {
   watchLaterMovies: MoviePresentable[];
 
   onSearchInputChange: (text: string) => void;
+
+  removeFromFavorites: (m: MoviePresentable) => void;
+  removeFromWatchLater: (m: MoviePresentable) => void;
 }
 
 const StyledAppBar = styled(AppBar)(() => ({
@@ -56,6 +59,7 @@ export function MoviesAppBar(props: Props) {
       menuId={favoritesMenuId}
       movies={props.favoritesMovies}
       onClose={handleFavoritesMenuClose}
+      onRemove={props.removeFromFavorites}
     />
   );
 
@@ -66,6 +70,7 @@ export function MoviesAppBar(props: Props) {
       menuId={watchLaterMenuId}
       movies={props.watchLaterMovies}
       onClose={handleWatchLaterMenuClose}
+      onRemove={props.removeFromWatchLater}
     />
   );
 

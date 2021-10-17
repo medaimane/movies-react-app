@@ -6,7 +6,7 @@ import {
 } from '../../screens/home/homeReducer';
 import {MovieJSON} from '../../services/api/models/MoviesJSON';
 import {ViewState} from '../../store/ViewState';
-import {moviesStub} from '../testDoubles.ts/moviesStub';
+import {moviePresentableStub, moviesStub} from '../testDoubles.ts/moviesStub';
 
 describe('homeReducer', () => {
   it('has initial state', () => {
@@ -16,6 +16,8 @@ describe('homeReducer', () => {
         movies: [],
         viewState: ViewState.Loading,
         isWelcomeVisible: true,
+        favoritesMovies: [],
+        watchLaterMovies: [],
       })
     );
   });
@@ -106,6 +108,81 @@ describe('homeReducer', () => {
         expect.objectContaining({
           movies: [],
           viewState: ViewState.Error,
+        })
+      );
+    });
+  });
+
+  describe('when HOME/ADD_TO_FAVORITES_MOVIES action received', () => {
+    it('adds movie from payload to favorites list', () => {
+      const action = HomeViewActions.addToFavoriesMovies(moviePresentableStub);
+      const state: HomeState = {
+        ...initialHomeState,
+        favoritesMovies: [],
+      };
+
+      const newState = sut(state, action);
+
+      expect(newState).toEqual(
+        expect.objectContaining({
+          favoritesMovies: [moviePresentableStub],
+        })
+      );
+    });
+  });
+
+  describe('when HOME/ADD_TO_WATCH_LATER_MOVIES action received', () => {
+    it('adds movie from payload to watch later list', () => {
+      const action =
+        HomeViewActions.addToWatchLaterMovies(moviePresentableStub);
+      const state: HomeState = {
+        ...initialHomeState,
+        watchLaterMovies: [],
+      };
+
+      const newState = sut(state, action);
+
+      expect(newState).toEqual(
+        expect.objectContaining({
+          watchLaterMovies: [moviePresentableStub],
+        })
+      );
+    });
+  });
+
+  describe('when HOME/REMOVE_FROM_FAVORITES_MOVIES action received', () => {
+    it('removes movie from payload from favorites list', () => {
+      const action =
+        HomeViewActions.removeFromFavoritesMovies(moviePresentableStub);
+      const state: HomeState = {
+        ...initialHomeState,
+        favoritesMovies: [moviePresentableStub],
+      };
+
+      const newState = sut(state, action);
+
+      expect(newState).toEqual(
+        expect.objectContaining({
+          favoritesMovies: [],
+        })
+      );
+    });
+  });
+
+  describe('when HOME/REMOVE_FROM_WATCH_LATER_MOVIES action received', () => {
+    it('removes movie from payload from watch later list', () => {
+      const action =
+        HomeViewActions.removeFromWatchLaterMovies(moviePresentableStub);
+      const state: HomeState = {
+        ...initialHomeState,
+        watchLaterMovies: [moviePresentableStub],
+      };
+
+      const newState = sut(state, action);
+
+      expect(newState).toEqual(
+        expect.objectContaining({
+          watchLaterMovies: [],
         })
       );
     });

@@ -1,7 +1,7 @@
-import {MenuItem} from '@mui/material';
 import React from 'react';
 import {MoviePresentable} from '../../screens/home/MoviePresentable';
 import {MenueWrapper} from './MenueWrapper';
+import MovieMenuCard from './MovieMenuCard';
 
 interface Props {
   anchorEl: HTMLElement | null;
@@ -10,19 +10,13 @@ interface Props {
   movies: MoviePresentable[];
 
   onClose: () => void;
-  onItemClick?: (m: MoviePresentable) => void;
+  onRemove: (m: MoviePresentable) => void;
 }
 
 export function MoviesMenu(props: Props) {
   const isOpen = Boolean(props.anchorEl);
 
   const handleClose = () => {
-    props.onClose();
-  };
-
-  const handleItemClick = (m: MoviePresentable) => {
-    props.onItemClick?.(m);
-
     props.onClose();
   };
 
@@ -34,12 +28,11 @@ export function MoviesMenu(props: Props) {
       onClose={handleClose}
     >
       {props.movies.map((m, idx) => (
-        <MenuItem
+        <MovieMenuCard
+          movie={m}
           key={'MoviesMenuItem_' + idx}
-          onClick={() => handleItemClick(m)}
-        >
-          {m.title}
-        </MenuItem>
+          onRemove={() => props.onRemove(m)}
+        />
       ))}
     </MenueWrapper>
   );

@@ -8,6 +8,8 @@ export interface HomeViewState {
 
   search: string;
   movies: MoviePresentable[];
+  favorites: MoviePresentable[];
+  watchLater: MoviePresentable[];
 }
 
 export function getViewState(
@@ -17,7 +19,14 @@ export function getViewState(
   return {
     search: state.search,
     viewState: state.viewState,
-    movies: buildMoviesPresentable(state.movies, imagesBaseUrl),
+    movies: buildMoviesPresentable(
+      state.movies,
+      state.favoritesMovies,
+      state.watchLaterMovies,
+      imagesBaseUrl
+    ),
     isWelcomeVisible: state.isWelcomeVisible,
+    favorites: state.favoritesMovies,
+    watchLater: state.watchLaterMovies,
   };
 }

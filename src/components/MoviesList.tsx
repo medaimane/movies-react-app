@@ -9,6 +9,9 @@ import {StyledImageListItem, StyledList} from './StyledList';
 
 interface Props {
   movies: MoviePresentable[];
+
+  addToFavorites: (m: MoviePresentable) => void;
+  addToWatchLater: (m: MoviePresentable) => void;
 }
 
 export function MoviesList(props: Props) {
@@ -34,16 +37,22 @@ export function MoviesList(props: Props) {
             actionIcon={
               <>
                 <IconButton
+                  disabled={m.isFavorite}
                   sx={{color: 'white'}}
                   aria-label={`FavoriteIcon ${m.title}`}
+                  onClick={() => props.addToFavorites(m)}
                 >
-                  <FavoriteIcon />
+                  <FavoriteIcon color={m.isFavorite ? 'error' : 'inherit'} />
                 </IconButton>
                 <IconButton
+                  disabled={m.isWatchLater}
                   sx={{color: 'white'}}
                   aria-label={`AccessTimeIcon ${m.title}`}
+                  onClick={() => props.addToWatchLater(m)}
                 >
-                  <AccessTimeIcon />
+                  <AccessTimeIcon
+                    color={m.isWatchLater ? 'error' : 'inherit'}
+                  />
                 </IconButton>
               </>
             }
