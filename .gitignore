@@ -24,3 +24,10 @@ yarn-error.log*
 
 # custom
 .env
+
+# Local Netlify folder
+.netlify
+branch_structure.json
+temp_auto_push.bat
+temp_interactive_push.bat
+.gitignore
