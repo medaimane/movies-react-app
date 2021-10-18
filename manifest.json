@@ -1,6 +1,6 @@
 {
-  "short_name": "React App",
-  "name": "Create React App Sample",
+  "short_name": "MoviesDB",
+  "name": "MoviesDB | The best movies space",
   "icons": [
     {
       "src": "favicon.ico",
